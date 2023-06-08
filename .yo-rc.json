@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "16.16.0",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.9.1"
+    },
+    "version": "1.17.1",
+    "libraryName": "sp-fx-curd",
+    "libraryId": "cefdaa1d-10f8-4088-9a1f-b74020fc998b",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "sp-fx-curd",
+    "solutionShortDescription": "sp-fx-curd description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "sp-fx-curd-client-side-solution",
+    "id": "cefdaa1d-10f8-4088-9a1f-b74020fc998b",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.17.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "sp-fx-curd description"
+      },
+      "longDescription": {
+        "default": "sp-fx-curd description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "sp-fx-curd Feature",
+        "description": "The feature that activates elements of the sp-fx-curd solution.",
+        "id": "8b4fa435-d88f-4942-8f21-77ad1bcd3197",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/sp-fx-curd.sppkg"
+  }
+}

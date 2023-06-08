@@ -1,0 +1,54 @@
+.box{
+  table,
+  td,
+  th {
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    
+  }
+  th{background-color: rgb(161, 20, 243);
+    color: white;
+  }
+  th,
+  td {
+    padding: 10px;
+    margin: auto;
+      text-align: center;
+   
+  }}
+  td button{
+    background-color: rgb(190, 82, 253);
+    color: rgb(252, 252, 252);
+    font-weight: bold;
+    cursor: pointer;
+    width: 90px;
+    height: 30px;
+    border-color: rgb(45, 5, 66);
+    margin-left: 30px;
+  
+    &:hover{
+      background-color: rgb(133, 5, 207);
+    }
+    
+  }
+  .space{
+    button{
+      background-color: rgb(190, 82, 253);
+      color: rgb(252, 252, 252);
+      font-weight: bold;
+      cursor: pointer;
+      width: 90px;
+      height: 30px;
+      border-color: rgb(45, 5, 66);
+
+      &:hover{
+        background-color: rgb(133, 5, 207);
+      }
+   
+  }}
+  
