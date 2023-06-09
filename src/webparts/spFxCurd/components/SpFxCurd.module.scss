@@ -29,7 +29,7 @@
     width: 90px;
     height: 30px;
     border-color: rgb(45, 5, 66);
-    margin-left: 30px;
+    
   
     &:hover{
       background-color: rgb(133, 5, 207);
@@ -37,6 +37,7 @@
     
   }
   .space{
+   
     button{
       background-color: rgb(190, 82, 253);
       color: rgb(252, 252, 252);
@@ -45,7 +46,7 @@
       width: 90px;
       height: 30px;
       border-color: rgb(45, 5, 66);
-
+margin-left: 30px;
       &:hover{
         background-color: rgb(133, 5, 207);
       }
