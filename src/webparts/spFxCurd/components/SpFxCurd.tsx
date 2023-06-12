@@ -10,7 +10,7 @@ interface IListItem {
   Title: string;
   Age: string;
   ID: number;
-  Salary:string;
+  Salary:number;
 }
 //multiple items
 interface IAllItems {
@@ -31,7 +31,7 @@ export default class CurdList extends React.Component<
       AllCurds: [], 
       listTitle: undefined,
       listAge: 0,
-      listSalary:0,
+      listSalary:"",
       listSelectedID: 0, 
     };
   }
