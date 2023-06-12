@@ -2,7 +2,7 @@ import * as React from "react";
 import styles from "./SpFxCurd.module.scss";
 import { ISpFxCurdProps } from "./ISpFxCurdProps";
 import { SPHttpClient, SPHttpClientResponse } from "@microsoft/sp-http"; //SPHttpClientConfiguration is declared but its value is never read.
-import * as moment from "moment";
+//import * as moment from "moment";
 
 //single item
 interface IListItem {
@@ -10,21 +10,15 @@ interface IListItem {
   Title: string;
   Age: string;
   ID: number;
-  Description: string;
-  DOB: any;
-  Salary: any;
-  Shift: any;
+  Salary:string;
 }
 //multiple items
 interface IAllItems {
   // 'IAllItems'
   AllCurds: IListItem[];
   listTitle: string;
-  listAge: any;
-  listDescription: any;
-   listDOB: any,
-  listSalary: any;
-  listShift: any; 
+  listAge: any; 
+  listSalary:any;
   listSelectedID: number;
 }
 export default class CurdList extends React.Component<
@@ -34,13 +28,10 @@ export default class CurdList extends React.Component<
   constructor(props: ISpFxCurdProps, state: IAllItems) {
     super(props);
     this.state = {
-      AllCurds: [],
+      AllCurds: [], 
       listTitle: undefined,
       listAge: 0,
-      listDescription: undefined,
-      listDOB: null,
-      listSalary: 0,
-      listShift: undefined,
+      listSalary:0,
       listSelectedID: 0, 
     };
   }
@@ -59,15 +50,22 @@ export default class CurdList extends React.Component<
     console.log(listurl);
 
     this.props.context.spHttpClient
-      .get(listurl, SPHttpClient.configurations.v1)
-      .then((response: SPHttpClientResponse) => {
-        response.json().then((responseJSON: any) => {
-          //console.log(responseJSON);
-          this.setState({ AllCurds: responseJSON.value });
+    .get(listurl, SPHttpClient.configurations.v1)
+    .then((response: SPHttpClientResponse) => {
+      if (response.ok) {
+        return response.json();
+      }
+    })
+    .then((i) => {
+      if (i == undefined) {
+      } else {
+        this.setState({
+          AllCurds: i.value,
         });
         console.log(this.state.AllCurds);
-      });
-  };
+      }
+    });
+};
   // Delete item
   public deleteItem = (itemID: number) => {
     // alert("this is delete");
@@ -105,10 +103,7 @@ export default class CurdList extends React.Component<
     const body: string = JSON.stringify({
       Title: this.state.listTitle,
       Age: this.state.listAge,
-      Description: this.state.listDescription,
-      DOB: this.state.listDOB,
-      Salary: this.state.listSalary,
-      Shift: this.state.listShift, 
+     Salary:this.state.listSalary,
       SelectedID: this.state.listSelectedID,
     });
 
@@ -127,7 +122,7 @@ export default class CurdList extends React.Component<
           this.getAllCurdDetails();
         } else {
           alert(`Something went wrong!`);
-          console.log(response.json());
+         console.log(response.json());
         }
       });
   };
@@ -142,10 +137,7 @@ export default class CurdList extends React.Component<
     const body: string = JSON.stringify({
       Title: this.state.listTitle,
       Age: this.state.listAge,
-      Description: this.state.listDescription,
-      DOB: this.state.listDOB,
-      Salary: this.state.listSalary,
-      Shift: this.state.listShift, 
+      Salary:this.state.listSalary,
       SelectedID: this.state.listSelectedID,
     });
 
@@ -215,36 +207,20 @@ export default class CurdList extends React.Component<
             }}
           />
           <br /><br />
-          <b >Description:</b>{" "}
           <input
-            value={this.state.listDescription}
-            type="text"
+            value={this.state.listSalary}
+            type="number"
             name=""
-            id="lsDescription"
-            placeholder="Description"
+            id="lsSalary"
+            placeholder="Salary"
             onChange={(e) => {
               this.setState({
-                listDescription: e.currentTarget.value as any,
-                
+                listSalary: e.currentTarget.value as any,
               });
-              
             }}
-            style={{height:"40px",width:"200px"}} 
           />
-          &nbsp;<br /><br />
-          {/* <b>DOB:</b>{" "}
-          <input
-            value={this.state.listDOB}
-            type="any"
-            name=""
-            id="lsDOB"
-            placeholder="DOB"
-            onChange={(e) => {
-              this.setState({
-                listDOB: e.currentTarget.value as any,
-              });
-            }}
-          /> */}
+          <br /><br />
+         
           <button
             onClick={() => {
               this.addItemInList();
@@ -265,10 +241,10 @@ export default class CurdList extends React.Component<
           <table>
             <th>Title</th>
             <th>Age</th>
-            <th>Description</th>
-            <th>DOB</th>
             <th>Salary</th>
-            <th>Shift</th>
+           {/*  <th>Description</th>
+            <th>DOB</th>
+            <th>Shift</th> */}
             <th></th>
             <th></th>
             {this.state.AllCurds.map((emp) => {
@@ -276,20 +252,20 @@ export default class CurdList extends React.Component<
                 <tr>
                   <td>{emp.Title}</td>
                   <td>{emp.Age}</td>
-                  <td>{emp.Description}</td>
-                   <td>{moment(emp.DOB).format("LL")}</td>
                   <td>{emp.Salary}</td>
-                   <td>{emp.Shift}</td> 
+                 {/*  <td>{emp.Description}</td>
+                   <td>{moment(emp.DOB).format("LL")}</td>
+                   <td>{emp.Shift}</td> */} 
                   <td>
                     <button
                       onClick={() => {
                         this.setState({
                           listTitle: emp.Title,
                           listAge: emp.Age,
-                          listDescription: emp.Description,
-                          listDOB:moment(emp.DOB).format("LL"),
                           listSalary: emp.Salary,
-                           listShift: emp.Shift,  
+                          /* listDescription: emp.Description,
+                          listDOB:moment(emp.DOB).format("LL"),
+                           listShift: emp.Shift,   */
                           listSelectedID: emp.ID,
                         });
                       }}
